@@ -1,22 +1,17 @@
-=-A1+B3*(A1+C2*(N2*3+3/2))-C2*(3+12*(-A2+4*C1-2))
-=-2+5*(2+8*(5*3+3/2))-8*(3+12*(-3+4*6-2))   = -1180
+Spreadsheet processor. It must be able to process cells just like in a ordinary spreadsheet, but will use simplified expressions. 
+Each cell may contain:
+- nothing;
+- integer or float number;
+- text labels, which is started with ' symbol;
+- expression, which is started with '=' symbol and may contain numbers, cell references, and simple arithmetic operations ('+', '-', '*', '/', '^') 
+with cell references. The priority of operations can be changed with the characters "(" and ")".
 
+Example of Data input:
+12		=C2	3	'Sample
+=(A1+B1)*C1/5	=A2*B1	=B3-C3	'Spread
+'Test		=4-3	5	'Sheet
 
-1. Шукаємо "(" якщо наступна дужка "(" змінюєм індекс "(" і дивимся чи наступна дужка не ")"
-2. Якщо між дужками всього 3 елемента обраховуємо і вертаємо новий список без дужок і з новим обрахованим
-3. Якщо між дужками більше 3 ел. визначаємо приорітет операцій між дужками і виконуємо (*або/) а потім (+або-) і вертаємо новий список замінених цими 3-ма елементами
-
-
-Розбиваємо формулу на список елементів
-
-1. Шукаємо "(" якщо наступна "(" змінюємо індекс і дивимося чи наступна дужка не ")"
-2. 
-
-1. Перевіряємо чи 1-ий елемент "-"
-
-2. Шукаємо наступний (+,-,*,/)
-3. Вирізаємо з рядка 2 елемента з 0 по індекс знаку -1 та сам знак
-4. Додаємо в список елементів
-
-стек      рядок   A1 B3 * + -
-
+Example of Data output:
+12	-4	3	Sample
+4,8	-19,2	-4	Spread
+Test	1	5	Sheet
